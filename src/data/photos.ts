@@ -23,7 +23,7 @@ const meta: Record<number, [Category, string]> = {
   9: ['living', 'The open living area with a wooden table and the wood-burning stove'],
   10: ['living', 'The modern kitchen with oven, gas hob and microwave'],
   11: ['living', 'The living area, wood stove and dining table'],
-  12: ['living', 'The fully equipped kitchen with a wooden bench'],
+  12: ['living', 'The kitchen with a wooden bench'],
   13: ['living', 'The wood-burning stove, a stack of logs and the sofa'],
   14: ['living', 'The sofa and coffee table in front of the stove'],
   15: ['living', 'Open-plan living, dining and kitchen under a wooden ceiling'],
