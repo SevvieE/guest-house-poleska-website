@@ -52,7 +52,10 @@ const activities = [
           <Icon name="utensils" class="place-icon" />
           <h3>{site.restaurant.name}</h3>
           <p>Traditional Montenegrin kitchen<br />Opasanica, by the river</p>
-          <a class="btn small" href={site.restaurant.url} target="_blank" rel="noopener">See it on Google Maps <Icon name="arrow" /></a>
+          <div class="place-links">
+            <a class="btn small" href={site.restaurant.url} target="_blank" rel="noopener">See it on Google Maps <Icon name="arrow" /></a>
+            <a class="btn small ghost" href={site.restaurant.instagramUrl} target="_blank" rel="noopener">Instagram</a>
+          </div>
           <p class="place-note">Check opening hours and how to reserve on Google Maps. It is best to ask ahead, especially for larger groups.</p>
         </div>
       </div>

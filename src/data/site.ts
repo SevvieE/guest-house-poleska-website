@@ -15,7 +15,11 @@ export const site = {
 
   airbnbUrl: 'https://www.airbnb.com/rooms/1776275231628249640',
   // Neighbours' family restaurant in Opasanica (Sladja).
-  restaurant: { name: 'Sladjina tradicionalna kuhinja', url: 'https://maps.app.goo.gl/V7THn4hhLLjPmy8bA' },
+  restaurant: {
+    name: 'Sladjina tradicionalna kuhinja',
+    url: 'https://maps.app.goo.gl/V7THn4hhLLjPmy8bA',
+    instagramUrl: 'https://www.instagram.com/sladjinadomacakuhinja/',
+  },
   instagramUrl: 'https://www.instagram.com/guesthousepoleska/',
   instagramHandle: '@guesthousepoleska',
 
