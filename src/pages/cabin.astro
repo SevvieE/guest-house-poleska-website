@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+
+const amenities = [
+  'Wi-Fi throughout',
+  'Firewood for the stove',
+  'Wood stove that heats the radiators',
+  'Fully equipped kitchen',
+  'Fresh bed linen and towels',
+  'Hot water',
+  'TV in the living area',
+  'Free parking',
+  'Access to the pool and outdoor kitchen',
+  'Fits up to 6 guests',
+];
+---
+<Base title="The cabin" description={`Inside the cabin at ${site.name}: an open-plan living area with a wood-burning stove, a fully equipped kitchen, two bedrooms and a modern bathroom. Sleeps up to ${site.guests}.`}>
+  <Hero photo={13} short position="50% 55%">
+    <span class="eyebrow">The cabin</span>
+    <h1>Warm wood, a crackling stove and room for six.</h1>
+  </Hero>
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Downstairs</span>
+        <h2>Cook, gather, unwind.</h2>
+        <p class="lead">The ground floor is one inviting open space with a wooden ceiling, big windows onto the trees, and a table that easily seats everyone.</p>
+        <p>The modern kitchen has everything you need to cook, with an oven, gas hob, microwave and fridge. When the evenings turn cool, gather around the central wood-burning stove. It is cleverly connected to the radiators, so it keeps the entire house warm.</p>
+        <p>A full, modern bathroom with a walk-in shower and heated towel rail is also on this floor.</p>
+      </div>
+      <div class="reveal">
+        <Photo id={9} ratio="43" eager />
+      </div>
+    </div>
+    <div class="container strip reveal" data-lb-scope>
+      <Photo id={13} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+      <Photo id={10} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+      <Photo id={17} ratio="43" sizes="(max-width: 720px) 100vw, 380px" />
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container">
+      <div class="split reverse">
+        <div class="reveal">
+          <Photo id={25} ratio="45" sizes="(max-width: 820px) 100vw, 520px" position="50% 40%" />
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">Upstairs</span>
+          <h2>Two bedrooms under the roof beams.</h2>
+          <p class="lead">Both rooms are warmly finished in wood, with fresh linen and towels waiting for you. Some windows are shaped by the roof itself and frame the mountains.</p>
+          <p>There is also a convenient half-bath with toilet and sink on this floor, so nobody has to go downstairs at night.</p>
+        </div>
+      </div>
+      <div class="beds reveal">
+        <div class="bed">
+          <div class="icons" aria-hidden="true">
+            <svg viewBox="0 0 44 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3v20M2 16h40v7M42 23v-8a4 4 0 0 0-4-4H16v5M6 11h6"/></svg>
+            <svg viewBox="0 0 30 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3v20M2 16h26v7M28 23v-8a4 4 0 0 0-4-4H12v5"/></svg>
+          </div>
+          <h3>Bedroom one</h3>
+          <p>One double bed and one single bed.</p>
+        </div>
+        <div class="bed">
+          <div class="icons" aria-hidden="true">
+            <svg viewBox="0 0 44 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3v20M2 16h40v7M42 23v-8a4 4 0 0 0-4-4H16v5M6 11h6"/></svg>
+            <svg viewBox="0 0 30 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3v20M2 16h26v7M28 23v-8a4 4 0 0 0-4-4H12v5"/></svg>
+          </div>
+          <h3>Bedroom two</h3>
+          <p>One double bed and one single bed.</p>
+        </div>
+      </div>
+      <div class="strip reveal" data-lb-scope>
+        <Photo id={19} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+        <Photo id={23} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+        <Photo id={22} ratio="43" sizes="(max-width: 720px) 100vw, 380px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Good to have</span>
+        <h2>Everything you need, nothing you do not.</h2>
+        <ul class="checks">
+          {amenities.map((a) => <li><Icon name="check" /><span>{a}</span></li>)}
+        </ul>
+      </div>
+      <div class="reveal">
+        <Photo id={11} ratio="43" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark cta">
+    <div class="container reveal">
+      <h2>Ready to warm up the stove?</h2>
+      <p class="price">From €{site.priceFrom} <small>per night</small></p>
+      <a class="btn" href="/book/">Check availability <Icon name="arrow" /></a>
+    </div>
+  </section>
+</Base>

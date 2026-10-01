@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+---
+<Base title="Pool & outdoors" description={`The outdoors at ${site.name}: a ${site.poolLengthM} m natural swimming pool, a covered outdoor kitchen with pizza oven and barbecue, a picnic area, a stream and a sauna.`}>
+  <Hero photo={8} short position="50% 55%">
+    <span class="eyebrow">Pool & outdoors</span>
+    <h1>The best room in the house is outside.</h1>
+  </Hero>
+
+  <section class="section" id="pool">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">The pool</span>
+        <h2>{site.poolLengthM} metres of natural swimming pool.</h2>
+        <p class="lead">Step out of the cabin door and into the water. The pool runs the full length of the terrace, with the wooded mountains rising behind it.</p>
+        <p>It is a natural pool, unlike any hotel pool. Take a slow morning swim, float on your back and watch the clouds move over the valley, or cool off after a hike.</p>
+      </div>
+      <div class="reveal">
+        <Photo id={3} ratio="43" eager />
+      </div>
+    </div>
+    <div class="container strip reveal" data-lb-scope>
+      <Photo id={2} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+      <Photo id={5} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+      <Photo id={7} ratio="43" sizes="(max-width: 720px) 100vw, 380px" />
+    </div>
+  </section>
+
+  <section class="section cream" id="kitchen">
+    <div class="container split reverse">
+      <div class="reveal">
+        <Photo id={31} ratio="43" />
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">The outdoor kitchen</span>
+        <h2>Dinner outside, all summer long.</h2>
+        <p class="lead">A massive covered terrace with a large wooden dining table, a barbecue and a traditional pizza oven.</p>
+        <p>It is set up with a sink, fridge, cooker and well-stocked kitchen equipment. There is even a dartboard on the wall for after dinner. Under the roof you are sheltered from sun and showers alike.</p>
+        <p>Fancy something more secluded? A separate picnic area with an extra barbecue is tucked among the trees.</p>
+      </div>
+    </div>
+    <div class="container strip reveal" data-lb-scope>
+      <Photo id={30} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+      <Photo id={32} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+      <Photo id={35} ratio="43" sizes="(max-width: 720px) 100vw, 380px" />
+    </div>
+  </section>
+
+  <section class="section" id="sauna">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">The sauna</span>
+        <h2>A little extra relaxation.</h2>
+        <p class="lead">After a day of walking, swimming or skiing, the sauna is a lovely way to end the day.</p>
+        <p>You can use it for a supplement of <strong>€{site.saunaSupplement}</strong>. Please book it in advance when you send us your request, so we can have it warm and ready for you.</p>
+        <a class="btn" href="/book/">Request your stay</a>
+      </div>
+      <div class="reveal">
+        <Photo id={27} ratio="43" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container split reverse">
+      <div class="reveal">
+        <Photo id={36} ratio="43" />
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">The grounds</span>
+        <h2>A stream, a meadow and a bit of shade.</h2>
+        <p class="lead">A lovely little stream flows right beside the house, tumbling over mossy rocks into clear little pools nearby.</p>
+        <p>Above the pool, the meadow is a great spot to read, to laze in a folding chair with a glass of something cold, or simply to enjoy the view of the cabin from above.</p>
+      </div>
+    </div>
+    <div class="container strip reveal" data-lb-scope>
+      <Photo id={33} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+      <Photo id={34} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+      <Photo id={29} ratio="43" sizes="(max-width: 720px) 100vw, 380px" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow reveal">
+      <div class="callout" style="margin-top:0">
+        <Icon name="info" />
+        <p><strong>Shared spaces.</strong> The garden, pool and outdoor kitchen are shared with our family, who live in the main house next door. You will likely see us around, and our friendly puppy Raco, too.</p>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,58 @@
+---
+import Photo from './Photo.astro';
+import { gallery } from '../data/photos';
+
+const cats = [
+  ['all', 'All photos'],
+  ['outdoors', 'Pool & outdoors'],
+  ['living', 'Living & kitchen'],
+  ['rooms', 'Bedrooms & baths'],
+  ['sauna', 'Sauna'],
+] as const;
+const LIMIT = 12;
+---
+<div data-gallery data-limit={LIMIT}>
+  <div class="filters" role="group" aria-label="Filter photos">
+    {cats.map(([key, label], i) => <button type="button" class="chip" data-cat={key} aria-pressed={i === 0 ? 'true' : 'false'}>{label}</button>)}
+  </div>
+  <div class="masonry" data-lb-scope>
+    {gallery.map((p) => (
+      <div class="tile" data-cat={p.category}>
+        <Photo id={p.id} ratio="natural" sizes="(max-width: 520px) 50vw, (max-width: 900px) 50vw, 380px" />
+      </div>
+    ))}
+  </div>
+  <div class="more-wrap" hidden data-more>
+    <button type="button" class="btn ghost" style="color:var(--ink)">Show all photos</button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((root) => {
+    const limit = Number(root.dataset.limit);
+    const tiles = [...root.querySelectorAll<HTMLElement>('.tile')];
+    const chips = [...root.querySelectorAll<HTMLButtonElement>('.chip')];
+    const more = root.querySelector<HTMLElement>('[data-more]')!;
+    let cat = 'all';
+    let expanded = false;
+    const render = () => {
+      let shown = 0;
+      const matching = tiles.filter((t) => cat === 'all' || t.dataset.cat === cat);
+      const cap = cat === 'all' && !expanded ? limit : Infinity;
+      tiles.forEach((t) => {
+        const i = matching.indexOf(t);
+        t.hidden = i === -1 || i >= cap;
+        if (!t.hidden) shown++;
+      });
+      more.hidden = !(cat === 'all' && !expanded && matching.length > limit);
+      more.querySelector('button')!.textContent = `Show all ${matching.length} photos`;
+    };
+    chips.forEach((c) => c.addEventListener('click', () => {
+      cat = c.dataset.cat!;
+      chips.forEach((o) => o.setAttribute('aria-pressed', String(o === c)));
+      render();
+    }));
+    more.querySelector('button')!.addEventListener('click', () => { expanded = true; render(); });
+    render();
+  });
+</script>

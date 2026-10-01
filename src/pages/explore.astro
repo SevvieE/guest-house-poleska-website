@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+
+const activities = [
+  { icon: 'mountain', title: 'Hiking', text: 'Trails start close to the house and lead up into the wild Komovi mountains.' },
+  { icon: 'bike', title: 'Mountain biking', text: 'Forest tracks and mountain roads, right from the doorstep.' },
+  { icon: 'horse', title: 'Horseback riding', text: 'Explore the valley the slow way, in the saddle.' },
+  { icon: 'car', title: 'Quad (ATV) trips', text: 'For a bit of thrill, there are quad trips in the area.' },
+] as const;
+---
+<Base title="Explore" description={`Things to do around ${site.name} in the Komovi mountains: hiking, mountain biking, horseback riding, quad trips and skiing in Kolašin. How to get here from Podgorica.`}>
+  <Hero photo={34} short position="50% 50%">
+    <span class="eyebrow">Explore</span>
+    <h1>A fantastic base for wild Montenegro.</h1>
+  </Hero>
+
+  <section class="section">
+    <div class="container">
+      <div class="reveal narrow">
+        <span class="eyebrow">Outdoor adventures</span>
+        <h2>Step out and go.</h2>
+        <p class="lead">The cabin lies in the Komovi mountains, in the village of Opasanica. Whatever the season, there is something to do right in the vicinity.</p>
+      </div>
+      <div class="cards reveal">
+        {activities.map((a) => (
+          <div class="card" style="text-decoration:none">
+            <div class="card-body" style="padding:28px 24px 30px">
+              <Icon name={a.icon} class="act-icon" />
+              <h3>{a.title}</h3>
+              <p>{a.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section cream" id="eat">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Eat like a local</span>
+        <h2>Dinner with our neighbours.</h2>
+        <p class="lead">Right here in Opasanica, our neighbours run a family restaurant by the river, where Sladja serves authentic Montenegrin food.</p>
+        <p>It is a lovely way to taste the region without going far: traditional home cooking from a local family, and a warm welcome. Guests rate it highly on Google Maps.</p>
+      </div>
+      <div class="reveal">
+        <div class="place">
+          <Icon name="utensils" class="place-icon" />
+          <h3>{site.restaurant.name}</h3>
+          <p>Traditional Montenegrin kitchen<br />Opasanica, by the river</p>
+          <a class="btn small" href={site.restaurant.url} target="_blank" rel="noopener">See it on Google Maps <Icon name="arrow" /></a>
+          <p class="place-note">Check opening hours and how to reserve on Google Maps. It is best to ask ahead, especially for larger groups.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">In winter</span>
+        <h2>Ski by day, stove by night.</h2>
+        <p class="lead">Kolašin ski resort is only a 45-minute drive away, which makes Poleska a very cosy basecamp for a skiing or snowboarding holiday.</p>
+        <p>If you visit in winter, especially in January and February, you are likely to find a beautiful, snowy winter wonderland. Despite the snow, the house and the roads remain accessible. Come home to the wood-burning stove that keeps the whole cabin warm.</p>
+      </div>
+      <div class="reveal">
+        <Photo id={13} ratio="43" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="getting-here">
+    <div class="container">
+      <div class="reveal narrow">
+        <span class="eyebrow">Getting here</span>
+        <h2>Easier than it looks.</h2>
+        <p class="lead">Poleska is in the quiet village of Opasanica, in Montenegro's Komovi mountains. We will send you the exact directions once your stay is confirmed.</p>
+      </div>
+      <ol class="route reveal">
+        <li><span class="dot"><Icon name="plane" /></span><b>Podgorica</b><span class="time">1 hour</span><small>The nearest airport and the capital</small></li>
+        <li><span class="dot"><Icon name="utensils" /></span><b>Kolašin</b><span class="time">30 min</span><small>Shops and restaurants. A good place to stock up on the way.</small></li>
+        <li><span class="dot"><Icon name="home" /></span><b>Opasanica</b><span class="time">Arrive</span><small>Guest House Poleska</small></li>
+        <li><span class="dot"><Icon name="mountain" /></span><b>Kolašin ski resort</b><span class="time">45 min</span><small>From the cabin, in winter</small></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow reveal">
+      <h2>Ask us anything.</h2>
+      <p class="lead">Because we live right next door, we are happy to share local tips, from favourite walks to where to eat in Kolašin. Just ask when you arrive, or send us a message beforehand.</p>
+      <a class="btn" href="/contact/">Get in touch <Icon name="arrow" /></a>
+    </div>
+  </section>
+</Base>

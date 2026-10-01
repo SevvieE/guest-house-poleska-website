@@ -1,0 +1,16 @@
+---
+import { photos, srcset } from '../data/photos';
+
+interface Props { photo: number; short?: boolean; position?: string; }
+const { photo, short = false, position = '50% 50%' } = Astro.props;
+const p = photos[photo];
+---
+<section class:list={['hero', { short }]}>
+  <div class="hero-bg" style={`background:${p.color}`}>
+    <img src={`/img/${photo}-1920.webp`} srcset={srcset(photo)} sizes="100vw" alt={p.alt} width={p.w} height={p.h} fetchpriority="high" decoding="async" style={`object-position:${position}`} />
+  </div>
+  <div class="container hero-inner">
+    <slot />
+    <slot name="facts" />
+  </div>
+</section>

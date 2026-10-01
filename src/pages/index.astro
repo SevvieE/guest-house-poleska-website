@@ -1,0 +1,155 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Photo from '../components/Photo.astro';
+import Gallery from '../components/Gallery.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+---
+<Base description={`${site.name}: a one-of-a-kind wooden cabin for up to ${site.guests} guests with a ${site.poolLengthM} m natural pool, wood stove and outdoor kitchen in the Komovi mountains, Montenegro. From €${site.priceFrom} a night.`}>
+  <Hero photo={2} position="75% 65%">
+    <span class="eyebrow">{site.place}</span>
+    <h1>A wooden cabin, a natural pool, a mountain stream.</h1>
+    <p class="lead">Guest House Poleska is a one-of-a-kind wooden cabin for up to {site.guests} guests, with a natural pool right outside the door, tucked into a green valley in the Komovi mountains. Yours to slow down in.</p>
+    <div class="actions">
+      <a class="btn" href="/book/">Check availability <Icon name="arrow" /></a>
+      <a class="btn ghost" href="/cabin/">See the cabin</a>
+    </div>
+    <div class="facts" slot="facts">
+      <ul>
+        <li><strong>{site.guests} guests</strong><span>{site.bedrooms} bedrooms</span></li>
+        <li><strong>{site.poolLengthM} m</strong><span>natural pool</span></li>
+        <li><strong>Wood stove</strong><span>heats the whole house</span></li>
+        <li><strong>Pizza oven</strong><span>covered outdoor kitchen</span></li>
+        <li><strong>€{site.priceFrom}</strong><span>from, per night</span></li>
+      </ul>
+    </div>
+  </Hero>
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Welcome</span>
+        <h2>Come for the quiet. Stay for the pool.</h2>
+        <p class="lead">Poleska sits in the peaceful village of Opasanica, with a little stream flowing right beside the house and forest all around.</p>
+        <p>It is a proper mountain hideaway: warm wood inside, a wood-burning stove for the evenings, and a long, clear pool just outside the door. Whether you have a week of hiking planned or simply want to do nothing beside the water, it is a lovely place to land.</p>
+        <p>The cabin is completely private for you. It sits on our family property, so the garden and pool are shared spaces, and we will probably say hello.</p>
+        <a class="textlink" href="/cabin/">Take a look inside</a>
+      </div>
+      <div class="reveal">
+        <Photo id={34} ratio="43" sizes="(max-width: 820px) 100vw, 560px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container">
+      <div class="reveal narrow">
+        <span class="eyebrow">The highlights</span>
+        <h2>Everything a mountain holiday needs.</h2>
+      </div>
+      <div class="cards reveal">
+        <a class="card" href="/outdoors/#pool">
+          <Photo id={2} ratio="43" lightbox={false} sizes="(max-width: 560px) 100vw, 300px" />
+          <div class="card-body"><h3>A natural pool</h3><p>{site.poolLengthM} metres of clear water with mountain views. Bring a towel, skip the crowds.</p></div>
+        </a>
+        <a class="card" href="/outdoors/#kitchen">
+          <Photo id={30} ratio="43" lightbox={false} sizes="(max-width: 560px) 100vw, 300px" />
+          <div class="card-body"><h3>Outdoor kitchen</h3><p>A covered terrace with a brick pizza oven, barbecue and a long table for everyone.</p></div>
+        </a>
+        <a class="card" href="/cabin/">
+          <Photo id={13} ratio="43" lightbox={false} sizes="(max-width: 560px) 100vw, 300px" />
+          <div class="card-body"><h3>Wood-burning stove</h3><p>The heart of the house. It even warms the radiators, so the whole cabin stays cosy.</p></div>
+        </a>
+        <a class="card" href="/outdoors/#sauna">
+          <Photo id={27} ratio="43" lightbox={false} sizes="(max-width: 560px) 100vw, 300px" />
+          <div class="card-body"><h3>Sauna</h3><p>For a little extra relaxation after a day outside. Available for a €{site.saunaSupplement} supplement.</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="reveal narrow">
+        <span class="eyebrow">Every season</span>
+        <h2>A cabin that is good all year round.</h2>
+        <p class="lead">Montenegro's mountains change completely with the seasons, and so does a stay at Poleska.</p>
+      </div>
+      <div class="seasons reveal">
+        <div class="season">
+          <Icon name="sun" />
+          <h3>Summer: swim, hike, repeat</h3>
+          <p>Start with a dip in the pool, head out on the trails on foot, by mountain bike or on horseback, and end the day around the pizza oven.</p>
+        </div>
+        <div class="season">
+          <Icon name="leaf" />
+          <h3>Autumn: colour and calm</h3>
+          <p>Golden forests, empty paths and long evenings by the stove. This is a wonderful time to slow down and get away from it all.</p>
+        </div>
+        <div class="season">
+          <Icon name="snow" />
+          <h3>Winter: your ski basecamp</h3>
+          <p>Kolašin ski resort is only 45 minutes away. Come home to a stove-warmed cabin in a snowy winter wonderland. The house and roads remain accessible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="reveal narrow">
+        <span class="eyebrow">Take a look around</span>
+        <h2>The cabin, the pool and everything in between.</h2>
+        <p class="lead">Tap any photo to enlarge it. The pictures were taken in September; in winter, expect snow.</p>
+      </div>
+      <div class="reveal">
+        <Gallery />
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="reveal narrow">
+        <span class="eyebrow">Finding us</span>
+        <h2>Remote enough to feel wild, close enough for groceries.</h2>
+      </div>
+      <ol class="route reveal">
+        <li><span class="dot"><Icon name="home" /></span><b>Opasanica</b><span class="time">You are here</span><small>Guest House Poleska</small></li>
+        <li><span class="dot"><Icon name="utensils" /></span><b>Kolašin</b><span class="time">30 min</span><small>Groceries and restaurants</small></li>
+        <li><span class="dot"><Icon name="mountain" /></span><b>Kolašin ski resort</b><span class="time">45 min</span><small>Skiing and snowboarding</small></li>
+        <li><span class="dot"><Icon name="plane" /></span><b>Podgorica</b><span class="time">1 hour</span><small>The capital and the nearest airport</small></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container hosts">
+      <div class="reveal">
+        <span class="eyebrow">Your hosts</span>
+        <h2>We live next door.</h2>
+        <p class="lead">Poleska is our family's piece of Montenegrin nature, and we love sharing it.</p>
+        <ul class="tips">
+          <li><Icon name="home" /><span>The cabin is completely private. We live in the main house nearby, with our young children.</span></li>
+          <li><Icon name="waves" /><span>The garden, pool and outdoor kitchen are shared, so you will likely see us around.</span></li>
+          <li><Icon name="paw" /><span>Meet Raco, our friendly puppy. Please be comfortable sharing the outdoors with him.</span></li>
+        </ul>
+      </div>
+      <div class="note reveal">
+        <p>Whether you need a local recommendation, a hand firing up the pizza oven, or just fancy a game of fetch with Raco, we are always around to help. At the same time, we fully respect your privacy and want you to feel completely at home.</p>
+        <p class="sign">Your hosts at Guest House Poleska</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark cta">
+    <div class="container reveal">
+      <img class="cta-logo" src="/logo-384.webp" srcset="/logo-192.webp 1x, /logo-384.webp 2x" width="176" height="176" alt="Guest House Poleska, Opasanica, Montenegro" loading="lazy" />
+      <span class="eyebrow">Ready when you are</span>
+      <h2>Come and stay with us.</h2>
+      <p class="price">From €{site.priceFrom} <small>per night</small></p>
+      <a class="btn" href="/book/">Check availability <Icon name="arrow" /></a>
+    </div>
+  </section>
+</Base>

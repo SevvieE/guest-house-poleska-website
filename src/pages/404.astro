@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+---
+<Base title="Page not found">
+  <Hero photo={35} short>
+    <span class="eyebrow">404</span>
+    <h1>Looks like you took a wrong turn.</h1>
+    <p class="lead">That page does not exist, but the cabin is still right where we left it.</p>
+    <div class="actions"><a class="btn" href="/">Back to the start <Icon name="arrow" /></a></div>
+  </Hero>
+</Base>
