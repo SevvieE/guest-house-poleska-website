@@ -16,6 +16,8 @@ import { site } from '../data/site';
         <h2>Send us a message</h2>
         <p class="lead">Questions about the cabin, the area or your stay? Write to us and we will reply personally.</p>
         <form class="form" id="contact" novalidate data-endpoint={site.formEndpoint}>
+          <input type="hidden" name="access_key" value={site.web3formsKey} />
+          <input type="hidden" name="subject" value={`New message via ${site.name} website`} />
           <div class="row">
             <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required /></div>
             <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>

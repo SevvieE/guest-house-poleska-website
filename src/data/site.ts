@@ -27,11 +27,12 @@ export const site = {
   },
 
   // No email address is shown on the site: visitors use the contact form.
+  // Web3Forms (web3forms.com) relays each message to guesthousepoleska@gmail.com, so that
+  // address never appears in the site's code or markup. The access key below is a public
+  // alias for that inbox, not a secret: https://docs.web3forms.com/getting-started/installation
   whatsapp: '', // e.g. '+38269000000'; leave empty to hide the WhatsApp link
-  // TODO: paste the endpoint of a form service (Formspree, Web3Forms, ...) here. The service
-  // forwards each message to the hosts' inbox, so the address itself never appears on the site.
-  // While empty, the form runs in test mode and sends nothing.
-  formEndpoint: '',
+  formEndpoint: 'https://api.web3forms.com/submit',
+  web3formsKey: '62f5f5d3-36b5-4095-8286-25a2e53cb11d',
 };
 
 export const nav = [
