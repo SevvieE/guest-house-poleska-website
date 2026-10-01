@@ -49,14 +49,17 @@ const activities = [
       </div>
       <div class="reveal">
         <div class="place">
-          <Icon name="utensils" class="place-icon" />
-          <h3>{site.restaurant.name}</h3>
-          <p>Traditional Montenegrin kitchen<br />Opasanica, by the river</p>
-          <div class="place-links">
-            <a class="btn small" href={site.restaurant.url} target="_blank" rel="noopener">See it on Google Maps <Icon name="arrow" /></a>
-            <a class="btn small ghost" href={site.restaurant.instagramUrl} target="_blank" rel="noopener">Instagram</a>
+          <img class="place-photo" src="/img/restaurant-sladja-1200.webp" srcset="/img/restaurant-sladja-640.webp 640w, /img/restaurant-sladja-1200.webp 1200w" sizes="(max-width: 820px) 100vw, 520px" alt="Inside Sladjina tradicionalna kuhinja: a cosy wooden dining room with a wine barrel and strings of garlic and peppers" width="1200" height="1500" loading="lazy" decoding="async" />
+          <div class="place-body">
+            <Icon name="utensils" class="place-icon" />
+            <h3>{site.restaurant.name}</h3>
+            <p>Traditional Montenegrin kitchen<br />Opasanica, by the river</p>
+            <div class="place-links">
+              <a class="btn small" href={site.restaurant.url} target="_blank" rel="noopener">See it on Google Maps <Icon name="arrow" /></a>
+              <a class="btn small ghost" href={site.restaurant.instagramUrl} target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <p class="place-note">Check opening hours and how to reserve on Google Maps. It is best to ask ahead, especially for larger groups.</p>
           </div>
-          <p class="place-note">Check opening hours and how to reserve on Google Maps. It is best to ask ahead, especially for larger groups.</p>
         </div>
       </div>
     </div>

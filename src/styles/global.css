@@ -331,7 +331,9 @@ dialog.lightbox::backdrop { background: rgba(8, 14, 10, 0.94); }
 
 /* explore page */
 .act-icon { width: 38px; height: 38px; color: var(--wood); margin-bottom: 14px; }
-.place { background: #fff; border-radius: var(--radius); padding: clamp(28px, 4vw, 44px); box-shadow: var(--shadow); }
+.place { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.place-photo { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.place-body { padding: clamp(24px, 4vw, 36px); }
 .place-icon { width: 40px; height: 40px; color: var(--wood); margin-bottom: 14px; }
 .place h3 { margin-bottom: 0.3em; }
 .place p { color: var(--muted); }
