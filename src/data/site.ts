@@ -23,6 +23,13 @@ export const site = {
   instagramUrl: 'https://www.instagram.com/guesthousepoleska/',
   instagramHandle: '@guesthousepoleska',
 
+  // Trans Euro Trail (TET): the house sits on the Montenegro route. The TET name and logos are
+  // protected by their owner, so we only link to the official site and never copy its logo or GPX files.
+  tet: {
+    homeUrl: 'https://transeurotrail.org/',
+    montenegroUrl: 'https://transeurotrail.org/montenegro/',
+  },
+
   // Hospitable direct-booking widget (shown on the Book page).
   hospitable: {
     siteUuid: 'a2cc3de3-43fd-49d9-b3af-d908aed2e11f',
@@ -43,6 +50,7 @@ export const nav = [
   { href: '/cabin/', label: 'The cabin' },
   { href: '/outdoors/', label: 'Pool & outdoors' },
   { href: '/explore/', label: 'Explore' },
+  { href: '/trans-euro-trail/', label: 'TET riders' },
   { href: '/book/', label: 'Book' },
   { href: '/contact/', label: 'Contact' },
 ];

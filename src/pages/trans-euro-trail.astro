@@ -1,0 +1,171 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+
+// Plain-text answers: they are shown on the page and reused as FAQ structured data for Google.
+const faq = [
+  ['Is Guest House Poleska on the Trans Euro Trail in Montenegro?', 'Yes. Our cabin in Opasanica, in the Komovi mountains, sits directly on the TET route through Montenegro, so you can sleep right on the trail without any detour.'],
+  ['Can I wash my motorcycle at the guest house?', 'Yes, there is a place at the house to wash your motorcycle and rinse off the dust and mud before you ride on.'],
+  ['Are tools available for repairs?', 'Yes, tools are available for repairs and adjustments. Let us know what you need when you book and we will do our best to help.'],
+  ['Is there a pool and sauna to relax after a day of riding?', `Yes. There is a ${site.poolLengthM} m natural swimming pool and a sauna. The sauna is a €${site.saunaSupplement} supplement and needs to be booked in advance, so mention it when you book.`],
+  ['Can a group of riders stay together?', `Yes. The cabin sleeps up to ${site.guests} guests in two bedrooms, each with one double bed and one single bed. There is an open-plan living area and a covered outdoor kitchen to share. Prices start from €${site.priceFrom} per night.`],
+  ['When is the best time to ride the TET in Montenegro?', 'According to the official Trans Euro Trail page, the Montenegro route is best ridden from June to November. It crosses mountains between 1,000 and 2,000 metres, where snow is possible even in summer, so check the conditions before you set off.'],
+  ['Where can I eat nearby?', 'Our neighbours run a traditional family restaurant in Opasanica. Kolašin, with groceries and more restaurants, is about 30 minutes away. You can also cook in the kitchen or on the covered outdoor kitchen with its barbecue and pizza oven.'],
+  ['Do you share the TET GPX track?', 'No. The official TET tracks are free, but only available from transeurotrail.org, so please download the latest version there. We are not affiliated with the Trans Euro Trail; we are simply a rider-friendly stop on the route.'],
+];
+
+const title = 'Trans Euro Trail accommodation in Montenegro';
+const description = `Our cabin sits right on the Trans Euro Trail in Montenegro: no detour. Pool and sauna to recover, tools for repairs and a place to wash your motorcycle.`;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).href },
+      { '@type': 'ListItem', position: 2, name: 'TET riders', item: new URL('/trans-euro-trail/', Astro.site).href },
+    ],
+  },
+];
+---
+<Base title={title} description={description} schema={schema}>
+  <Hero photo={3} short position="50% 60%">
+    <span class="eyebrow">For Trans Euro Trail riders</span>
+    <h1>Sleep right on the Trans Euro Trail in Montenegro.</h1>
+    <p class="lead">No detour, no hunting for a bed. Ride in, wash the dust off your bike and recover in our pool and sauna.</p>
+    <div class="actions">
+      <a class="btn" href="/book/">Check availability <Icon name="arrow" /></a>
+      <a class="btn ghost" href={site.tet.montenegroUrl} target="_blank" rel="noopener">TET Montenegro route</a>
+    </div>
+  </Hero>
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">On the route</span>
+        <h2>Zero detour: the TET runs right past our door.</h2>
+        <p class="lead">Guest House Poleska stands in Opasanica, in the Komovi mountains, directly on the Trans Euro Trail through Montenegro.</p>
+        <p>You do not have to leave the track to find a bed. Ride in, park up and you are already home for the night.</p>
+        <p>The TET (Trans Euro Trail) is a free GPX route network, made by the adventure motorcycle community, that links dirt roads and quiet lanes across Europe. The <a class="textlink" href={site.tet.montenegroUrl} target="_blank" rel="noopener">Montenegro section</a> is a compact 290 km of mountain tracks between 1,000 and 2,000 metres, and the official page recommends riding it from June to November. That makes for a proper day in the saddle, which is why we have set this place up for the end of it.</p>
+        <p>Our very first guests were two riders making their way along the TET, and it turned out to be a very natural fit.</p>
+      </div>
+      <div class="reveal">
+        <Photo id={8} ratio="43" eager />
+      </div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container">
+      <div class="reveal narrow">
+        <span class="eyebrow">After a long day in the saddle</span>
+        <h2>Recover, repair and wash up.</h2>
+        <p class="lead">Everything an adventure rider needs at the end of the day, right where the trail leaves off.</p>
+      </div>
+      <div class="cards reveal">
+        <div class="card">
+          <div class="card-body" style="padding:28px 24px 30px">
+            <Icon name="waves" class="act-icon" />
+            <h3>A natural pool</h3>
+            <p>Cool off in a {site.poolLengthM} m natural pool with mountain views, and wash the heat and dust of the track away.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body" style="padding:28px 24px 30px">
+            <Icon name="steam" class="act-icon" />
+            <h3>Sauna for tired muscles</h3>
+            <p>Loosen up stiff shoulders and arms. A €{site.saunaSupplement} supplement, booked in advance, so tell us when you will arrive.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body" style="padding:28px 24px 30px">
+            <Icon name="wrench" class="act-icon" />
+            <h3>Tools for repairs</h3>
+            <p>Tools are available for repairs and adjustments, so a small fix does not have to end your trip. Let us know what you need.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body" style="padding:28px 24px 30px">
+            <Icon name="droplet" class="act-icon" />
+            <h3>A place to wash your bike</h3>
+            <p>Rinse off the mud and dust before the next stretch. There is a spot at the house to wash your motorcycle.</p>
+          </div>
+        </div>
+      </div>
+      <div class="strip reveal" data-lb-scope>
+        <Photo id={27} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+        <Photo id={2} ratio="43" sizes="(max-width: 720px) 50vw, 380px" />
+        <Photo id={5} ratio="43" sizes="(max-width: 720px) 100vw, 380px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split reverse">
+      <div class="reveal">
+        <Photo id={31} ratio="43" />
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Stay together</span>
+        <h2>A base for your whole riding group.</h2>
+        <p class="lead">The cabin sleeps up to {site.guests} guests, so a group of riders can share one place instead of splitting up across hotels.</p>
+        <p>There are two bedrooms, each with one double bed and one single bed, an open-plan living area with a wood-burning stove, a kitchen and a full bathroom downstairs. Outside, the covered terrace has a long wooden table, a barbecue and a pizza oven, ideal for swapping stories about the day on the trail.</p>
+        <p>Too tired to cook? Our neighbours run a traditional family restaurant right here in Opasanica. <a class="textlink" href="/explore/#eat">Eat like a local</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="reveal narrow">
+        <span class="eyebrow">Planning your stay</span>
+        <h2>Three steps to a bed on the TET.</h2>
+      </div>
+      <div class="seasons reveal">
+        <div class="season">
+          <Icon name="pin" />
+          <h3>1. Check the track</h3>
+          <p>Download the latest Montenegro GPX from the <a class="textlink" href={site.tet.homeUrl} target="_blank" rel="noopener">official Trans Euro Trail site</a>. It is updated from time to time, so get it just before you travel.</p>
+        </div>
+        <div class="season">
+          <Icon name="home" />
+          <h3>2. Pick your dates</h3>
+          <p>Choose your dates in the <a class="textlink" href="/book/">booking calendar</a> to see availability and the exact price. Stays start from €{site.priceFrom} per night.</p>
+        </div>
+        <div class="season">
+          <Icon name="chat" />
+          <h3>3. Tell us you are coming</h3>
+          <p>Use the <a class="textlink" href="/contact/">contact form</a> to mention the sauna, tools or a wash-down, and roughly when you expect to arrive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container narrow faq reveal">
+      <span class="eyebrow">Questions from riders</span>
+      <h2>Trans Euro Trail stay in Montenegro: FAQ</h2>
+      {faq.map(([q, a]) => (
+        <details><summary>{q}</summary><p>{a}</p></details>
+      ))}
+      <p class="disclaimer">Trans Euro Trail and TET are trademarks of their owner. Guest House Poleska is an independent stop on the route and is not affiliated with or endorsed by the Trans Euro Trail. Route details come from the <a class="textlink" href={site.tet.montenegroUrl} target="_blank" rel="noopener">official TET Montenegro page</a>.</p>
+    </div>
+  </section>
+
+  <section class="section dark cta">
+    <div class="container reveal">
+      <span class="eyebrow">Riding the TET through Montenegro?</span>
+      <h2>Your bed on the trail is waiting.</h2>
+      <p class="price">From €{site.priceFrom} <small>per night</small></p>
+      <a class="btn" href="/book/">Check availability <Icon name="arrow" /></a>
+    </div>
+  </section>
+</Base>
