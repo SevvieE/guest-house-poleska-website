@@ -46,11 +46,25 @@ export const site = {
   web3formsKey: '62f5f5d3-36b5-4095-8286-25a2e53cb11d',
 };
 
-export const nav = [
+export interface NavItem {
+  href: string;
+  label: string;
+  children?: NavItem[]; // shown as a dropdown in the header
+}
+
+export const nav: NavItem[] = [
   { href: '/cabin/', label: 'The cabin' },
   { href: '/outdoors/', label: 'Pool & outdoors' },
-  { href: '/explore/', label: 'Explore' },
-  { href: '/trans-euro-trail/', label: 'TET riders' },
+  {
+    href: '/explore/',
+    label: 'Explore',
+    children: [
+      { href: '/explore/', label: 'Things to do' },
+      { href: '/explore/#eat', label: 'Eat like a local' },
+      { href: '/explore/#getting-here', label: 'Getting here' },
+      { href: '/trans-euro-trail/', label: 'TET riders' },
+    ],
+  },
   { href: '/book/', label: 'Book' },
   { href: '/contact/', label: 'Contact' },
 ];

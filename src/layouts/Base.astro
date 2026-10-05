@@ -60,7 +60,15 @@ const jsonLd = {
           <Icon name="menu" />
         </button>
         <nav class="nav" id="nav" aria-label="Main">
-          {nav.filter((n) => n.href !== '/book/').map((n) => (
+          {nav.filter((n) => n.href !== '/book/').map((n) => n.children ? (
+            <div class="nav-group">
+              <a href={n.href} class:list={{ active: n.children.some((c) => c.href.split('#')[0] === path) }} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>
+              <button type="button" class="sub-toggle" aria-expanded="false" aria-label={`Show the ${n.label} menu`}><Icon name="down" /></button>
+              <div class="submenu">
+                {n.children.map((c) => <a href={c.href}>{c.label}</a>)}
+              </div>
+            </div>
+          ) : (
             <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>
           ))}
           <a class="btn small" href="/book/">Check availability</a>
@@ -85,7 +93,7 @@ const jsonLd = {
           <div>
             <h4>Explore</h4>
             <ul>
-              {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+              {nav.flatMap((n) => [n, ...(n.children ?? []).filter((c) => c.href !== n.href)]).map((n) => <li><a href={n.href}>{n.label}</a></li>)}
             </ul>
           </div>
           <div>
@@ -131,6 +139,26 @@ const jsonLd = {
       nav.addEventListener('click', (e) => {
         if ((e.target as HTMLElement).closest('a')) { nav.classList.remove('open'); header.classList.remove('menu-open'); toggle.setAttribute('aria-expanded', 'false'); }
       });
+
+      // dropdowns: hover/focus opens them on desktop, the chevron button opens them on touch
+      const groups = [...document.querySelectorAll<HTMLElement>('.nav-group')];
+      const closeGroups = (except?: HTMLElement) => groups.forEach((g) => {
+        if (g === except) return;
+        g.classList.remove('open');
+        g.querySelector('.sub-toggle')?.setAttribute('aria-expanded', 'false');
+      });
+      groups.forEach((g) => {
+        const btn = g.querySelector<HTMLButtonElement>('.sub-toggle')!;
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const open = !g.classList.contains('open');
+          closeGroups(g);
+          g.classList.toggle('open', open);
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      });
+      document.addEventListener('click', (e) => { if (!(e.target as HTMLElement).closest('.nav-group')) closeGroups(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeGroups(); });
 
       // reveal on scroll
       const io = new IntersectionObserver((entries) => {
