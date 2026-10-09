@@ -141,10 +141,13 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   /* on phones the dropdown is simply shown, indented under its parent */
   .nav-group { flex-direction: column; align-items: stretch; gap: 0; }
   .sub-toggle { display: none; }
-  .submenu {
+  /* visibility must follow the (hidden) mobile menu: 'visible' here would leave
+     invisible submenu links over the page that catch taps meant for other links */
+  .submenu,
+  .nav-group:hover .submenu, .nav-group:focus-within .submenu, .nav-group.open .submenu {
     position: static; margin: 0; min-width: 0; padding: 0 0 4px 18px;
     background: none; box-shadow: none; border-radius: 0;
-    opacity: 1; visibility: visible; transform: none;
+    opacity: 1; visibility: inherit; transform: none;
   }
   .submenu::before { display: none; }
   .nav .submenu a { padding: 12px 0; border-radius: 0; font-size: 1.02rem; color: var(--muted); border-bottom: 1px solid rgba(27, 42, 34, 0.06); }
