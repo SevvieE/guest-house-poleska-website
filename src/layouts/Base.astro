@@ -201,5 +201,9 @@ const jsonLd = {
       dlg.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
       dlg.addEventListener('touchend', (e) => { const d = e.changedTouches[0].clientX - x0; if (Math.abs(d) > 60) show(idx + (d < 0 ? 1 : -1)); });
     </script>
+
+    {site.cloudflareAnalyticsToken && (
+      <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: site.cloudflareAnalyticsToken })}></script>
+    )}
   </body>
 </html>

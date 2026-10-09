@@ -30,6 +30,10 @@ export const site = {
     montenegroUrl: 'https://transeurotrail.org/montenegro/',
   },
 
+  // Cloudflare Web Analytics: cookieless visitor stats, so no cookie banner is needed.
+  // The token is public (it ends up in every page); empty disables the script.
+  cloudflareAnalyticsToken: 'fa30c4c2f75c4938a43e07988f22766b',
+
   // Hospitable direct-booking widget (shown on the Book page).
   hospitable: {
     siteUuid: 'a2cc3de3-43fd-49d9-b3af-d908aed2e11f',
