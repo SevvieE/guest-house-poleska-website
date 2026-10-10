@@ -213,6 +213,17 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   .facts li:nth-child(3), .facts li:nth-child(4) { display: none; }
   .hero::after { background: linear-gradient(to top, rgba(8, 18, 12, 0.88) 0%, rgba(8, 18, 12, 0.6) 55%, rgba(8, 18, 12, 0.38) 100%); }
 }
+/* phones: let the home page photo breathe; keep the place, the headline and one button
+   (the intro, the second button and the facts all reappear just below the hero) */
+@media (max-width: 600px) {
+  .hero:not(.short) p.lead,
+  .hero:not(.short) .btn.ghost,
+  .hero:not(.short) .facts { display: none; }
+  .hero:not(.short) h1 { font-size: 2.3rem; margin-bottom: 1.2rem; }
+  .hero:not(.short)::after {
+    background: linear-gradient(to top, rgba(8, 18, 12, 0.82) 0%, rgba(8, 18, 12, 0.45) 30%, rgba(8, 18, 12, 0) 58%, rgba(8, 18, 12, 0) 82%, rgba(8, 18, 12, 0.4) 100%);
+  }
+}
 
 /* ---------- layout blocks ---------- */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
